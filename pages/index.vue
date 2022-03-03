@@ -1,5 +1,5 @@
 <template>
-  <v-carousel
+  <!-- <v-carousel
     cycle
     height="400"
     hide-delimiter-background
@@ -38,7 +38,9 @@
         </v-row>
       </v-sheet>
     </v-carousel-item>
-  </v-carousel>
+  </v-carousel> -->
+  <div>
+  </div>
 </template>
 
 <script>
