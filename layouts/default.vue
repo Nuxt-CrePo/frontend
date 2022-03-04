@@ -1,12 +1,11 @@
 <template>
-  <v-app dark>
-   
+  <div class="container">
    <Header/>
-    <v-main>
+   <div class="body">
       <Nuxt/>
-    </v-main>
+   </div>
     <Footer/>
-  </v-app>
+  </div>
 </template>
 
 <script>
@@ -20,5 +19,13 @@ export default {
 </script>
 
 <style lang="scss">
-  
+.body {
+  margin:0;
+   padding:0;
+   height:100%;
+}
+.container {
+   min-height:100%;
+   position:relative;
+}
 </style>

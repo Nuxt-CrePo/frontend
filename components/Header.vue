@@ -1,66 +1,158 @@
 <template>
-    <div>
-       <v-navigation-drawer
-      v-model="drawer"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
+  <div>
+    <header class="header">
+      <nav class="navbar">
+        <a class="logo">Try&Buy</a>
+        <ul :class="isOpen === false ?
+            'navmenu' : 'navmenu' + ' ' + 'active'">
+          <li class="navitem">
+            <NuxtLink to="/">
+              <a class="navlink">Home</a>
+            </NuxtLink>
+          </li>
+          <li class="navitem">
+            <NuxtLink to="/">
+              <a class="navlink">Home</a>
+            </NuxtLink>
+          </li>
+        </ul>
+        <!-- <button v-on:click="say('quoi')">test</button> -->
+        <button
+        <!-- :class="isOpen === false ?
+            'hamburger' : 'hamburger' + ' ' + 'active'"
+            :click="openMenu"
+          -->
+          v-on:click="say('quoi')"
         >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      app
-    >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <div class="my-parent">
-         <v-toolbar-title v-text="title" />
-      </div>
-     
-      <v-spacer />
-    </v-app-bar>
-    </div>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </nav>
+    </header>
+  </div>
 </template>
 
 <script>
     export default {
         data () {
-    return {
-      drawer: false,
-      fixed: false,
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
+          return {
+             isOpen: false,
+             name: 'Vue.js'
+          }
         },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'About',
-          to: '/'
+        methods: {    
+          say: function (message) {
+      alert(message)
+    },
+     
+         openMenu() {
+           this.isOpen = true;
+           console.log("test")
+         }
+
         }
-      ],
-      title: 'CrePo'
-    }
-  }
     }
 </script>
 
 <style lang="scss" scoped>
+.header {
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
 
+.navbar {
+  background-color: #808080;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  position: relative;
+}
+
+.hamburger {
+  display: none;
+}
+
+.bar {
+  display: block;
+  width: 35px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #222222;
+}
+
+.navmenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navitem {
+  margin-left: 5rem;
+}
+
+.navlink {
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 2px;
+  font-size: 14px;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.navlink:hover {
+  color: #4b4747;
+}
+
+.navlogo {
+  font: italic 2em "Open Sans", sans-serif;
+  font-size: 2.1rem;
+  font-weight: 500;
+}
+
+@media only screen and (max-width: 1024px) {
+  .navmenu {
+    position: fixed;
+    left: -100%;
+    top: 5rem;
+    flex-direction: column;
+    background-color: #000000;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+  }
+
+  .navmenu.active {
+    z-index: 1;
+    left: 0;
+  }
+
+  .navitem {
+    margin: 2.5rem 0;
+  }
+
+  .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    -webkit-transform: translateY(8px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    -webkit-transform: translateY(-8px) rotate(-45deg);
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
 </style>

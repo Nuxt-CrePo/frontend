@@ -28,6 +28,7 @@ import WelcomeMessage from './WelcomeMessage.vue';
 </script>
 
 <style lang="scss" scoped>
+
     .dashboard__wrapper {
     display: flex;
     justify-content: space-between;
