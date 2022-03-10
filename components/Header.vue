@@ -2,27 +2,25 @@
   <div>
     <header class="header">
       <nav class="navbar">
-        <a class="logo">Try&Buy</a>
+        <h2 class="logo">CrePo</h2>
         <ul :class="isOpen === false ?
             'navmenu' : 'navmenu' + ' ' + 'active'">
-          <li class="navitem">
+          <li class="navitem" v-on:click="openMenu">
             <NuxtLink to="/">
               <a class="navlink">Home</a>
             </NuxtLink>
           </li>
-          <li class="navitem">
-            <NuxtLink to="/">
-              <a class="navlink">Home</a>
+          <li class="navitem" v-on:click="openMenu">
+            <NuxtLink to="/dashboard">
+              <a class="navlink">dashboard</a>
             </NuxtLink>
           </li>
         </ul>
-        <!-- <button v-on:click="say('quoi')">test</button> -->
         <button
-        <!-- :class="isOpen === false ?
+       :class="isOpen === false ?
             'hamburger' : 'hamburger' + ' ' + 'active'"
-            :click="openMenu"
-          -->
-          v-on:click="say('quoi')"
+            v-on:click="openMenu"
+          
         >
           <span class="bar"></span>
           <span class="bar"></span>
@@ -42,20 +40,19 @@
           }
         },
         methods: {    
-          say: function (message) {
-      alert(message)
-    },
      
          openMenu() {
-           this.isOpen = true;
-           console.log("test")
+           this.isOpen = !this.isOpen;
          }
-
         }
     }
 </script>
 
 <style lang="scss" scoped>
+.logo {
+    font-size: 2.1rem;
+    font-weight: 500;
+}
 .header {
   height: 100%;
   position: relative;
