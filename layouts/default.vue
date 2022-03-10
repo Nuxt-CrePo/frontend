@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container__default">
    <Header/>
    <div class="body">
       <Nuxt/>
@@ -23,8 +23,9 @@ export default {
   margin:0;
    padding:0;
    height:100%;
+   overflow: hidden;
 }
-.container {
+.container__default {
    min-height:100%;
    position:relative;
 }
