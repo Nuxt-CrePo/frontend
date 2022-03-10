@@ -98,6 +98,10 @@
   font-size: 14px;
   color: #ffffff;
   text-transform: uppercase;
+  
+}
+li a {
+    text-decoration: none;
 }
 
 .navlink:hover {
