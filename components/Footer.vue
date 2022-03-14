@@ -11,12 +11,16 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-.bottom__footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 20px; /* Height of the footer */
-  background: #212129cf;
-  text-align: center;
+.bottom_footer {
+    background: grey;
+    text-align: center;
+    clear: both;
+    position: relative;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    padding: 2%;
+    
 }
+
 </style>

@@ -1,40 +1,29 @@
 <template>
   <div>
-    <div class="text__test">HAI</div>
-    <div class="text__test">HAI</div>
-    <div class="text__test">HAI</div>
-    <div class="text__test">HAI</div>
-     <div class="text__test">HAI</div>
-    
-    
+    <p v-if="$fetchState.pending">Loading....</p>
+    <p v-else-if="$fetchState.error">Error while fetching github</p>
+    <ul v-else>
+      <li v-for="(repo, index) in githubRepos" :key="index">
+        {{ repo.name }}
+      </li>
+    </ul>
   </div>
 </template>
-
 <script>
-export default {
-  data() {
-    return {
-      carouselItems: [
-        {
-          text: "image 1",
-          image:
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png",
-        },
-        {
-          text: "image 1",
-          image:
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png",
-        },
-        {
-          text: "image 1",
-          image:
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png",
-        },
-      ],
-    };
-  },
-};
+  export default {
+    data() {
+      return {
+        githubRepos: []
+      }
+    },
+    async fetch() {
+      this.githubRepos = await fetch(
+        'https://api.github.com/users/KevlinS/repos'
+      ).then(res => res.json())
+    }
+  }
 </script>
+
 
 <style lang="scss">
 .text__image {

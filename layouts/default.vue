@@ -1,7 +1,7 @@
 <template>
   <div class="container__default">
    <Header/>
-   <div class="body">
+   <div class="body__default">
       <Nuxt/>
    </div>
     <Footer/>
@@ -19,11 +19,11 @@ export default {
 </script>
 
 <style lang="scss">
-.body {
+.body__default {
   margin:0;
    padding:0;
    height:100%;
-   overflow: hidden;
+   
 }
 .container__default {
    min-height:100%;
