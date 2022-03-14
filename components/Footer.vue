@@ -11,7 +11,7 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-.bottom_footer {
+.bottom__footer {
     background: grey;
     text-align: center;
     clear: both;
@@ -20,7 +20,7 @@ export default {};
     justify-content: center;
     align-items: center;
     padding: 2%;
-    
+
 }
 
 </style>
