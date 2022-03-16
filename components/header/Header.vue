@@ -33,30 +33,36 @@
       <span class="bar"></span>
     </button>
     <div class="navbar__right-side"  >
-      <div
+      <div class="navbar__list">
+         <div
         class="navbar__search"
         :class="{
-          navbar__open: wantsToSeach,
+          navbar__open: wantsToSearch,
         }"
       >
         
-        <i  @click="wantsToSeach = !wantsToSeach"
+        <i  @click="wantsToSearch = !wantsToSearch"
           ><font-awesome-icon class="navbar__iconSearch" :icon="['fas', 'magnifying-glass']"
         /></i>
-       
-        
 
         <input
-          v-if="wantsToSeach"
+          v-if="wantsToSearch"
           v-model="searchInput"
           type="text"
-          placeholder="Titres, personnes, genres"
+          placeholder="Projects, technos, genres..."
           @input="searchMovie(searchInput)"
         />
       </div>
+      </div>
+     
       <div class="navbar__list">
-          <i><font-awesome-icon class="navbar__iconGithub" :icon="['fab', 'github']" /></i>
-          <i><font-awesome-icon class="navbar__iconLinkedin" :icon="['fab', 'linkedin']" /></i>
+        <a href="https://github.com/KevlinS" target="_blank">
+        <i><font-awesome-icon class="navbar__iconGithub" :icon="['fab', 'github']" /></i>
+        </a>
+        <a href="https://www.linkedin.com/in/kevlin-susanto-138b00146/" target="_blank">
+         <i><font-awesome-icon class="navbar__iconLinkedin" :icon="['fab', 'linkedin']" /></i>
+         </a>
+         
    
           <i><font-awesome-icon class="navbar__iconUser" :icon="['fas', 'user']" /></i>
           <i><font-awesome-icon class="navbar__iconArrow" :icon="['fas', 'caret-down']" /></i>
@@ -82,7 +88,7 @@ export default {
   data() {
     return {
       isOpen: false,
-      wantsToSeach: false,
+      wantsToSearch: false,
       searchInput: "",
     };
   },
@@ -160,7 +166,7 @@ export default {
     align-items: center;
     justify-content: space-between;
     transition: 0.3s ease-in;
-    height: 40px;
+    height: 30px;
     & input {
       padding: 1rem 5rem 1rem 0.5rem;
       background-color: transparent;

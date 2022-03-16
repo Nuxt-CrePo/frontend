@@ -2,13 +2,16 @@
   <div>
     <section class="banner"></section>
 
-    <p v-if="$fetchState.pending">Loading....</p>
+<div class="container__main">
+  <p v-if="$fetchState.pending">Loading....</p>
     <p v-else-if="$fetchState.error">Error while fetching github</p>
     <ul v-else>
-      <li v-for="(repo, index) in githubRepos" :key="index">
+      <li class="text__test" v-for="(repo, index) in githubRepos" :key="index">
         {{ repo.name }}
       </li>
     </ul>
+</div>
+    
   </div>
 </template>
 <script>
@@ -32,8 +35,11 @@
   position: relative;
   width: 100%;
   height: 100vh;
-  background: url('https://firebasestorage.googleapis.com/v0/b/vicflix-2fbe0.appspot.com/o/Pictures%2FProjects%2Fmilinus%2Fmilinus.png?alt=media&token=1a524a27-fb5b-4a01-af27-cacc83872d9e');
+  background: url('https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
   background-size: cover;
+}
+.container__main{
+  background-color: #000;
 }
 .text__image {
   position: absolute;
@@ -45,12 +51,12 @@
 }
 
 .text__test {
-  color: black;
+  color: #fff;
   position: relative;
   font-family: $open-sans;
   font-weight: bold;
-  font-size: 15rem;
-  font-weight: 300;
-  line-height: 15rem;
+  font-size: 1rem;
+  font-weight: 30;
+  line-height: 1rem;
 }
 </style>

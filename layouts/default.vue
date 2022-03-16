@@ -1,22 +1,22 @@
 <template>
   <div class="container__default">
-    <Header v-if="!isDashboard"/>
+    <Header v-if="isIndex"/>
     <div class="body__default">
       <Nuxt />
     </div>
-    <Footer />
+    <Footer v-if="!isDashboard"/>
   </div>
 </template>
 
 <script>
-import Footer from "../components/Footer.vue";
-import Header from "../components/Header.vue";
+import Footer from "../components/footer/Footer.vue";
+import Header from "../components/header/Header.vue";
 
 export default {
   components: { Header, Footer },
   computed: {
-    isDashboard() {
-      return this.$route.name === "dashboard" || this.$route.name === "about";
+    isIndex() {
+      return this.$route.name === "index" ;
     },
   },
 };
