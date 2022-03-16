@@ -1,5 +1,7 @@
 <template>
   <div>
+    <section class="banner"></section>
+
     <p v-if="$fetchState.pending">Loading....</p>
     <p v-else-if="$fetchState.error">Error while fetching github</p>
     <ul v-else>
@@ -26,6 +28,13 @@
 
 
 <style lang="scss">
+.banner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url('https://firebasestorage.googleapis.com/v0/b/vicflix-2fbe0.appspot.com/o/Pictures%2FProjects%2Fmilinus%2Fmilinus.png?alt=media&token=1a524a27-fb5b-4a01-af27-cacc83872d9e');
+  background-size: cover;
+}
 .text__image {
   position: absolute;
   font-family: $open-sans;

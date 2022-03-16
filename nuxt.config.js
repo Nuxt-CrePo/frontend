@@ -38,8 +38,14 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
     '@nuxtjs/style-resources',
+    '@nuxtjs/fontawesome'
   ],
-
+  fontawesome: {
+    icons:{
+     solid:true,
+     brands:true
+    }
+   },
   styleResources: {
     scss: [
       '~assets/styles/style.scss'
