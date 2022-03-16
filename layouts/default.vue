@@ -4,7 +4,7 @@
     <div class="body__default">
       <Nuxt />
     </div>
-    <Footer v-if="!isDashboard"/>
+    <Footer v-if="isIndex"/>
   </div>
 </template>
 
