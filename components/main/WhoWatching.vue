@@ -1,34 +1,23 @@
 <template>
   <div class="wrapper">
-    <div>
-      <HeaderLanding />
-    </div>
-    <div class="container__item">
-      <div>
-        <h1 class="container__text">Who's watching?</h1>
-        <div class="container__users">
-          <div class="user">
-            <NuxtLink to="/">
-              <img
-                class="img__profile"
-                src="https://images.unsplash.com/photo-1618641986557-1ecd230959aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-                alt="Grapefruit slice atop a pile of other slices"
-              />
-              <a>Kevlin</a>
-            </NuxtLink>
-          </div>
-          <div class="user">
-            <NuxtLink to="/">
-              <img
-                class="img__profile"
-                src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
-                alt="Grapefruit slice atop a pile of other slices"
-              />
-              <a>Dude</a>
-            </NuxtLink>
-          </div>
-        </div>
+    <HeaderLanding/>
+   <div class="container__text">
+        <h1>Who's watching?</h1>
       </div>
+    <div class="container__item">
+     
+      <ul class="container__users" v-for="(user, index) in users" :key="index">
+        <li class="user">
+          <NuxtLink to="/">
+            <img
+              class="img__profile"
+              :src="user.img"
+              alt="Grapefruit slice atop a pile of other slices"
+            />
+            <a>{{ user.name }}</a>
+          </NuxtLink>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -38,6 +27,25 @@ import HeaderLanding from "../header/HeaderLanding.vue";
 
 export default {
   components: HeaderLanding,
+  data() {
+    return {
+      isLogin: false,
+      users: [
+        {
+          name: "Kevlin",
+          img:
+            "https://images.unsplash.com/photo-1618641986557-1ecd230959aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+        },
+        {
+          name: "Dude",
+          img:
+            "https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
+        },
+        
+        
+      ],
+    };
+  },
 };
 </script>
 
@@ -48,52 +56,50 @@ export default {
   align-items: center;
   text-align: center;
   background-color: #141414;
+  height: 100vh;
 }
 .container__item {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
 }
 
-.container__text {
+.container__text{
   color: white;
   font-size: 3rem;
   line-height: 1;
   margin-bottom: 2rem;
+  position: relative;
+  top: 40vh;
 }
 
 .img__profile {
   height: 180px;
   width: 180px;
+  max-width: 100%;
   cursor: pointer;
-  
 }
 
 .container__users {
-  display: grid;
-  grid-auto-flow: column;
-  grid-column-gap: 40px;
+  padding: 10px;
+  position: relative;
+  top: 40vh;
   & img {
     border-radius: 0.25rem;
     margin-bottom: 1rem;
   }
   & a {
-    font-size: 1.3vw;
+    font-size: 20px;
     color: gray;
     text-decoration: none;
+    display: grid;
   }
-  & :hover img{
+  & :hover img {
     border: solid 2px #fff;
-    
   }
   & :hover a {
-      color: #fff;
-    }
-}
-
-.user a {
-  display: grid;
+    color: #fff;
+  }
 }
 </style>
