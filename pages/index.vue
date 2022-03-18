@@ -7,7 +7,8 @@
     <p v-else-if="$fetchState.error">Error while fetching github</p>
     <ul v-else>
       <li class="text__test" v-for="(repo, index) in githubRepos" :key="index">
-        {{ repo.name }}
+        <img :src="imgURL + repo.poster_path" />
+        {{ repo.original_title }}
       </li>
     </ul>
 </div>
@@ -18,13 +19,15 @@
   export default {
     data() {
       return {
-        githubRepos: []
+        githubRepos: [],
+        imgURL: "https://image.tmdb.org/t/p/w200"
       }
     },
     async fetch() {
       this.githubRepos = await fetch(
-        'https://api.github.com/users/KevlinS/repos'
+        'https://api.themoviedb.org/3/movie/now_playing?api_key=9dcb183679039b039c527c347b054639&language=en-US&page=1'
       ).then(res => res.json())
+      .then(res => this.githubRepos = res.results);
     }
   }
 </script>
