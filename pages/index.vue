@@ -2,31 +2,24 @@
   <div>
     <section class="banner"></section>
 
-<div class="container__main">
-  <p v-if="$fetchState.pending">Loading....</p>
-    <p v-else-if="$fetchState.error">Error while fetching github</p>
-    <ul v-else>
-      <li class="text__test" v-for="(repo, index) in githubRepos" :key="index">
-        {{ repo.name }}
-      </li>
-    </ul>
-</div>
-    
+    <div class="container__main">
+      <ProjectsGithub />
+      <!-- Counter: {{this.$store.state.projects.counter}}
+  <button @click="add_one">add</button> -->
+    </div>
   </div>
 </template>
 <script>
-  export default {
-    data() {
-      return {
-        githubRepos: []
-      }
+import ProjectsGithub from "../components/projects/ProjetcsGithub";
+
+export default {
+  components: { ProjectsGithub },
+  methods: {
+    add_one() {
+      this.$store.commit("projects/increment");
     },
-    async fetch() {
-      this.githubRepos = await fetch(
-        'https://api.github.com/users/KevlinS/repos'
-      ).then(res => res.json())
-    }
-  }
+  },
+};
 </script>
 
 
@@ -35,11 +28,12 @@
   position: relative;
   width: 100%;
   height: 100vh;
-  background: url('https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+  background: url("https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
   background-size: cover;
 }
-.container__main{
+.container__main {
   background-color: #000;
+  color: white;
 }
 .text__image {
   position: absolute;
