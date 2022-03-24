@@ -4,8 +4,8 @@
 
     <div class="container__main">
       <ProjectsGithub />
-      <!-- Counter: {{this.$store.state.projects.counter}}
-  <button @click="add_one">add</button> -->
+      Counter: {{this.$store.state.projects.projectsGithub}}
+  <button @click="add_one">add</button>
     </div>
   </div>
 </template>
@@ -16,7 +16,8 @@ export default {
   components: { ProjectsGithub },
   methods: {
     add_one() {
-      this.$store.commit("projects/increment");
+      this.$store.commit("projects/setProjectsGithub");
+      console.log(this.$store.state.projects.projectsGithub)
     },
   },
 };
