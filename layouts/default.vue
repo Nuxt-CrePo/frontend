@@ -13,10 +13,11 @@ import Footer from "../components/footer/Footer.vue";
 import Header from "../components/header/Header.vue";
 
 export default {
-  components: { Header, Footer },
+  components: { Header, Footer }, 
   computed: {
     isIndex() {
-      return this.$route.name === "index" ;
+      return this.$route.name === "index";
+      
     },
   },
 };

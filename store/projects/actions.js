@@ -1,10 +1,13 @@
 import axios from "axios";
 
 export const getGithubProjects = async ({ commit }) => {
-    await axios.get("https://api.github.com/users/KevlinS/repos")
-    .then(response => {
-        commit('setProjectsGithub', response.data)
-        console.log(response)
-    })
+    try {
+        const data = await axios.get('https://api.github.com/users/KevlinS/repos')
+          commit('setProjectsGithub', data.data)
+        }
+        catch (error) {
+            alert(error)
+            console.log(error)
+        }
     
 }  

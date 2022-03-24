@@ -20,7 +20,6 @@
       <li class="navbar__items" v-on:click="openMenu">
         <NuxtLink to="/dashboard">
           <a>Dashboard</a>
-          <fa icon="envelope" />
         </NuxtLink>
       </li>
     </ul>

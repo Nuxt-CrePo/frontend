@@ -1,3 +1,3 @@
-export const getProject = () => {
-    
+export const getProjects = (state) => {
+    state.projectsGithub
 }

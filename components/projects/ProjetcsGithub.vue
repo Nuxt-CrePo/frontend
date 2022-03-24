@@ -1,9 +1,9 @@
 <template>
   <div>
-    <p v-if="$fetchState.pending">Loading....</p>
-    <p v-else-if="$fetchState.error">Error while fetching github</p>
+    <p v-if="isLoading">Loading....</p>
+    <!-- <p v-else-if="$fetchState.error">Error while fetching github</p> -->
     <ul v-else>
-      <li class="text__test" v-for="(repo, index) in githubRepos" :key="index">
+      <li class="text__test" v-for="(repo, index) in projectsGithub" :key="index">
         {{ repo.name }}
       </li>
     </ul>
@@ -11,29 +11,23 @@
 </template>
 
 <script>
-import axios from "axios";
+
 export default {
   data() {
     return {
-      githubRepos: [],
+      isLoading: true
     };
   },
-  // computed: {
-  //   projectsGithub() {
-  //     return this.$store.state.projects.projectsGithub
-  //   }
-  // },
-  // mounted() {
-  //   this.$store.dispatch("getGithubProjects")
-  // }
-  async fetch() {
-    await axios
-      .get("https://api.github.com/users/KevlinS/repos")
-      .then((response) => {
-        this.githubRepos = response.data;
-        console.log(response);
-      });
+  computed: {
+    projectsGithub() {
+      return this.$store.state.projects.projectsGithub
+    }
   },
+  mounted() {
+    // dispatch the getGithubProjects action which commits a mutation to update the state
+    this.isLoading = false
+    this.$store.dispatch("projects/getGithubProjects")
+  }
 };
 </script>
 
