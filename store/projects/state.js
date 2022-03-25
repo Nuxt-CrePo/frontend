@@ -1,4 +1,4 @@
 export default {
     projectsGithub: [],
-    counter: 0
+    counter: 0,
 }

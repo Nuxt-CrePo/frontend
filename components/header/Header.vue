@@ -65,19 +65,20 @@
    
           <i><font-awesome-icon class="navbar__iconUser" :icon="['fas', 'user']" /></i>
           <i><font-awesome-icon class="navbar__iconArrow" :icon="['fas', 'caret-down']" /></i>
+             
    
         <!-- <img src="@/static/img/profile.png" alt="profile" /> -->
       </div>
+      
     </div>
   </nav>
 </template>
 
 <script>
-window.addEventListener("scroll", function () {
-  var header = this.document.querySelector("nav");
-  header.classList.toggle("sticky", this.window.scrollY > 0);
-});
+
+
 export default {
+  
   props: {
     search: {
       type: String,
@@ -100,6 +101,11 @@ export default {
     },
   },
 };
+
+window.addEventListener("scroll", function () {
+  var header = this.document.querySelector("nav");
+  header.classList.toggle("sticky", this.window.scrollY > 0);
+});
 </script>
 
 <style lang="scss" scoped>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <p v-if="isLoading">Loading....</p>
-    <!-- <p v-else-if="$fetchState.error">Error while fetching github</p> -->
+    
     <ul v-else>
       <li class="text__test" v-for="(repo, index) in projectsGithub" :key="index">
         {{ repo.name }}

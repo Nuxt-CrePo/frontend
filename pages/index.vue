@@ -1,18 +1,34 @@
 <template>
-  <div>
-    <section class="banner"></section>
+  <div >
+    <div  v-if="isLoggedIn">
+      <WhoWatching />
+    </div>
+    <div v-else>
+      <section class="banner"></section>
 
-    <div class="container__main">
-      <ProjectsGithub />
+      <div class="container__main">
+        <ProjectsGithub />
+      </div>
     </div>
   </div>
 </template>
 <script>
 import ProjectsGithub from "../components/projects/ProjetcsGithub";
-
+import WhoWatching from "../components/main/WhoWatching.vue";
 export default {
-  components: { ProjectsGithub },
-   
+  components: { ProjectsGithub, WhoWatching },
+  data() {
+    return {
+      isLoggedIn: null,
+    };
+  },
+  mounted() {
+    if (localStorage.getItem("user")) {
+      this.isLoggedIn = false;
+    } else {
+      this.isLoggedIn = true;
+    }
+  },
 };
 </script>
 
