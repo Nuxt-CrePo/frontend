@@ -9,3 +9,7 @@
 @import "./theme/button.scss";
 @import "./theme/spacing.scss";
 @import "./theme/title.scss";
+//tailwind
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
