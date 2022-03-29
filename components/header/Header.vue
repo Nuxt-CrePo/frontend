@@ -31,54 +31,77 @@
       <span class="bar"></span>
       <span class="bar"></span>
     </button>
-    <div class="navbar__right-side"  >
+    <div class="navbar__right-side">
       <div class="navbar__list">
-         <div
-        class="navbar__search"
-        :class="{
-          navbar__open: wantsToSearch,
-        }"
-      >
-        
-        <i  @click="wantsToSearch = !wantsToSearch"
-          ><font-awesome-icon class="navbar__iconSearch" :icon="['fas', 'magnifying-glass']"
-        /></i>
+        <div
+          class="navbar__search"
+          :class="{
+            navbar__open: wantsToSearch,
+          }"
+        >
+          <i @click="wantsToSearch = !wantsToSearch"
+            ><font-awesome-icon
+              class="navbar__iconSearch"
+              :icon="['fas', 'magnifying-glass']"
+          /></i>
 
-        <input
-          v-if="wantsToSearch"
-          v-model="searchInput"
-          type="text"
-          placeholder="Projects, technos, genres..."
-          @input="searchMovie(searchInput)"
-        />
+          <input
+            v-if="wantsToSearch"
+            v-model="searchInput"
+            type="text"
+            placeholder="Projects, technos, genres..."
+            @input="searchMovie(searchInput)"
+          />
+        </div>
       </div>
-      </div>
-     
-      <div class="navbar__list">
-        <a href="https://github.com/KevlinS" target="_blank">
-        <i><font-awesome-icon class="navbar__iconGithub" :icon="['fab', 'github']" /></i>
-        </a>
-        <a href="https://www.linkedin.com/in/kevlin-susanto-138b00146/" target="_blank">
-         <i><font-awesome-icon class="navbar__iconLinkedin" :icon="['fab', 'linkedin']" /></i>
-         </a>
-         
-   
-          <i><font-awesome-icon class="navbar__iconUser" :icon="['fas', 'user']" /></i>
-          <i><font-awesome-icon class="navbar__iconArrow" :icon="['fas', 'caret-down']" /></i>
-             
-   
-        <!-- <img src="@/static/img/profile.png" alt="profile" /> -->
-      </div>
-      
+
+      <ul class="navbar__list">
+        <li>
+          <a href="https://github.com/KevlinS" target="_blank">
+            <i
+              ><font-awesome-icon
+                class="navbar__iconGithub"
+                :icon="['fab', 'github']"
+            /></i>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.linkedin.com/in/kevlin-susanto-138b00146/"
+            target="_blank"
+          >
+            <i
+              ><font-awesome-icon
+                class="navbar__iconLinkedin"
+                :icon="['fab', 'linkedin']"
+            /></i>
+          </a>
+        </li>
+        <li class="dropdown">
+          <a class="dropbtn">
+            <img class="navbar__imgProfile" :src="userImg" alt="profile" />
+            <i
+              ><font-awesome-icon
+                class="navbar__iconArrow"
+                :icon="['fas', 'caret-down']"
+            /></i>
+            <div class="dropdown-content">
+              <a href="#">About me</a>
+              <a href="#">Contact</a>
+              <a href="#">Github</a>
+              <a href="#">Linkedin</a>
+              <hr />
+              <a href="#">Logout</a>
+            </div>
+          </a>
+        </li>
+      </ul>
     </div>
   </nav>
 </template>
 
 <script>
-
-
 export default {
-  
   props: {
     search: {
       type: String,
@@ -90,7 +113,15 @@ export default {
       isOpen: false,
       wantsToSearch: false,
       searchInput: "",
+      user: {},
+      userName: "",
+      userImg: "",
     };
+  },
+  mounted() {
+    this.user = JSON.parse(localStorage.getItem("user"));
+    this.userName = this.user[0].name;
+    this.userImg = this.user[0].img;
   },
   methods: {
     openMenu() {
@@ -109,6 +140,58 @@ window.addEventListener("scroll", function () {
 </script>
 
 <style lang="scss" scoped>
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
+  background-color: inherit;
+  font-family: inherit;
+  position: relative;
+  top: -18px;
+  margin-top: 35px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #080800;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  position: fixed;
+  top: 70px;
+  right: 50px;
+
+  & hr { display: block; height: 1px;
+    border: 0; border-top: 1px solid #131111;
+    margin: 1em 0; padding: 0; }
+  
+}
+
+.dropdown-content a {
+  float: none;
+  color: white;
+  padding: 6px 13px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  text-decoration: underline;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 .navbar {
   z-index: 1;
   position: fixed;
@@ -121,6 +204,14 @@ window.addEventListener("scroll", function () {
   transition: 0.6s;
   padding: 1rem 1rem;
   background-color: transparent;
+  &__imgProfile {
+    position: relative;
+    top: 5px;
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+    border-radius: 0.25rem;
+  }
   &__logo {
     width: 14rem;
     cursor: pointer;
@@ -141,6 +232,13 @@ window.addEventListener("scroll", function () {
     margin-right: auto;
     & i {
       color: #fff;
+      cursor: pointer;
+      height: 0;
+    }
+    & a {
+      display: flex;
+    }
+    & .profile__dropdown {
       cursor: pointer;
     }
   }
@@ -185,15 +283,13 @@ window.addEventListener("scroll", function () {
       &:focus {
         outline: none;
       }
-      .icon{
+      .icon {
         height: 40px;
-        
       }
     }
     & i {
       color: #fff;
       cursor: pointer;
-    
     }
   }
   &__iconArrow {
@@ -203,32 +299,27 @@ window.addEventListener("scroll", function () {
   &__iconLinkedin {
     height: 40px;
     width: 18px;
-    margin-right: 12px;
+    margin-right: 20px;
+    margin-top: 16px;
   }
   &__iconSearch {
     height: 40px;
     width: 20px;
-    margin-right: 12px;
+    margin-right: 20px;
+    position: relative;
+    top: -15px;
   }
   &__iconGithub {
     height: 40px;
     width: 22px;
-    margin-right: 12px;
+    margin-right: 20px;
+    margin-top: 16px;
   }
   &__iconUser {
     height: 40px;
     width: 17px;
+  }
 
-  }
-  &__profile {
-    margin: 0 0 0 0;
-    color: #fff;
-      margin-right: 1rem;
-      cursor: pointer;
-    & img {
-      border-radius: 1rem;
-    }
-  }
   &.sticky {
     background: #141414;
   }
@@ -249,7 +340,7 @@ window.addEventListener("scroll", function () {
 }
 
 @media only screen and (max-width: 1024px) {
-  .navbar__list { 
+  .navbar__list {
     position: fixed;
     left: -100%;
     top: 10rem;
@@ -261,7 +352,7 @@ window.addEventListener("scroll", function () {
     transition: 0.3s;
     box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
   }
-  
+
   .navbar__list.active {
     z-index: 1;
     left: 0;

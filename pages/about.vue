@@ -1,21 +1,61 @@
 <template>
-<div class="md:flex">
-  <div class="md:flex-shrink-0">
-    <img class="rounded-lg md:w-56" src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=448&q=80" alt="Woman paying for a purchase">
-  </div>
-  <div class="mt-4 md:mt-0 md:ml-6">
-    <div class="uppercase tracking-wide text-sm text-indigo-600 font-bold">Marketing</div>
-    <a href="#" class="block mt-1 text-lg leading-tight font-semibold text-gray-900 hover:underline">Finding customers for your new business</a>
-    <p class="mt-2 text-gray-600">Getting a new business off the ground is a lot of hard work. Here are five ideas you can use to find your first customers.</p>
-  </div>
-</div>
+<v-app>
+ <v-card
+    class="mx-auto elevation-20"
+    color="purple"
+    dark
+    style="max-width: 400px;"
+  >
+    <v-row justify="space-between">
+      <v-col cols="8">
+        <v-card-title>
+          <div>
+            <div class="text-h5">
+              Halycon Days
+            </div>
+            <div>Ellie Goulding</div>
+            <div>(2013)</div>
+          </div>
+        </v-card-title>
+      </v-col>
+      <v-img
+        class="shrink ma-2"
+        contain
+        height="125px"
+        src="https://cdn.vuetifyjs.com/images/cards/halcyon.png"
+        style="flex-basis: 125px"
+      ></v-img>
+    </v-row>
+    <v-divider dark></v-divider>
+    <v-card-actions class="pa-4">
+      Rate this album
+      <v-spacer></v-spacer>
+      <span class="grey--text text--lighten-2 text-caption mr-2">
+        ({{ rating }})
+      </span>
+      <v-rating
+        v-model="rating"
+        background-color="white"
+        color="yellow accent-4"
+        dense
+        half-increments
+        hover
+        size="18"
+      ></v-rating>
+    </v-card-actions>
+  </v-card>
+</v-app>
+ 
 </template>
-
 <script>
 
 import WhoWatching from "../components/main/WhoWatching.vue";
 export default {
   components: {  WhoWatching },
+  data: () => ({
+     
+      rating: 4,
+    }),
 };
 
 

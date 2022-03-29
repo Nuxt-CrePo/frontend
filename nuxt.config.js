@@ -6,8 +6,8 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - CrePo',
-    title: 'CrePo',
+    titleTemplate: '%s - Kevlix',
+    title: 'Kevlix',
     htmlAttrs: {
       lang: 'en'
     },
