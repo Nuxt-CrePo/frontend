@@ -4,7 +4,7 @@
         <img src="http://s18.postimg.org/il7hbk7i1/image.png" />
     </div>
     <div class="text">
-        <a class="mylink">link</a>
+        <a class="mylink">linkk</a>
     </div>
 </div>
 
