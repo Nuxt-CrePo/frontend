@@ -8,10 +8,11 @@
       <ul class="container__users" v-for="(user, index) in users" :key="index">
         <li class="user" v-on:click="setLoginUser(user)">
           <NuxtLink to="/">
+     
             <img
               class="img__profile"
               :src="user.img"
-              alt="Grapefruit slice atop a pile of other slices"
+              alt="image user"
             />
             <a>{{ user.name }}</a>
           </NuxtLink>
@@ -63,6 +64,8 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
+
+ 
 }
 
 .container__text {

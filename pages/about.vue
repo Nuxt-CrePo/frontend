@@ -1,50 +1,13 @@
 <template>
-<v-app>
- <v-card
-    class="mx-auto elevation-20"
-    color="purple"
-    dark
-    style="max-width: 400px;"
-  >
-    <v-row justify="space-between">
-      <v-col cols="8">
-        <v-card-title>
-          <div>
-            <div class="text-h5">
-              Halycon Days
-            </div>
-            <div>Ellie Goulding</div>
-            <div>(2013)</div>
-          </div>
-        </v-card-title>
-      </v-col>
-      <v-img
-        class="shrink ma-2"
-        contain
-        height="125px"
-        src="https://cdn.vuetifyjs.com/images/cards/halcyon.png"
-        style="flex-basis: 125px"
-      ></v-img>
-    </v-row>
-    <v-divider dark></v-divider>
-    <v-card-actions class="pa-4">
-      Rate this album
-      <v-spacer></v-spacer>
-      <span class="grey--text text--lighten-2 text-caption mr-2">
-        ({{ rating }})
-      </span>
-      <v-rating
-        v-model="rating"
-        background-color="white"
-        color="yellow accent-4"
-        dense
-        half-increments
-        hover
-        size="18"
-      ></v-rating>
-    </v-card-actions>
-  </v-card>
-</v-app>
+<div id="box">
+    <div class="image">
+        <img src="http://s18.postimg.org/il7hbk7i1/image.png" />
+    </div>
+    <div class="text">
+        <a class="mylink">link</a>
+    </div>
+</div>
+
  
 </template>
 <script>
@@ -62,5 +25,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.image img {
+   display:block;
+   width: 250px;
+   height: 250px;
+}
 
+.image img {        
+    -moz-transform:scale(1);
+    -webkit-transform:scale(1);
+    -o-transform:scale(1);
+    transform:scale(1);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+#box:hover .image img {    
+    cursor: pointer;
+    -moz-transform:scale(1.5);
+    -webkit-transform:scale(1.5);
+    -o-transform:scale(1.5);
+    transform:scale(1.5);
+}
 </style>

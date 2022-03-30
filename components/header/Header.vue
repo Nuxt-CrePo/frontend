@@ -18,8 +18,13 @@
         </NuxtLink>
       </li>
       <li class="navbar__items" v-on:click="openMenu">
-        <NuxtLink to="/dashboard">
-          <a>Dashboard</a>
+        <NuxtLink to="/">
+          <a>Skills</a>
+        </NuxtLink>
+      </li>
+      <li class="navbar__items" v-on:click="openMenu">
+        <NuxtLink to="/">
+          <a>Experience</a>
         </NuxtLink>
       </li>
     </ul>
@@ -91,7 +96,7 @@
               <a href="#">Github</a>
               <a href="#">Linkedin</a>
               <hr />
-              <a href="#">Logout</a>
+              <a v-on:click="setLogoutUser()">Logout</a>
             </div>
           </a>
         </li>
@@ -130,6 +135,10 @@ export default {
     searchMovie() {
       this.$router.push(`/search?query=${this.searchInput}`);
     },
+     setLogoutUser() {
+    localStorage.removeItem("user"); 
+    window.location.reload()
+  }
   },
 };
 

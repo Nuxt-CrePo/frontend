@@ -40,6 +40,7 @@ export default {
   height: 100vh;
   background: url("https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
   background-size: cover;
+  box-shadow: rgba(0, 0, 0, 1) 0px 0px 80px 100px inset;
 }
 .container__main {
   background-color: #000;
