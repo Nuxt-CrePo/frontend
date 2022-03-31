@@ -13,7 +13,7 @@
     >
       <h1>Hi, <br />i'm Kevlin, <span class="typing"></span></h1>
     </vue-typed-js>
-    <h3>I’m a Front-End Developer located in Paris.</h3>
+    <h3>I’m a student, web developer located in Paris.</h3>
     <h3>The things that i like</h3>
     <div class="icons">
       <i class="icon" aria-label="JavaScript" data-balloon-pos="up"
