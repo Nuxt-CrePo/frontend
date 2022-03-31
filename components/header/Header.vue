@@ -216,8 +216,8 @@ window.addEventListener("scroll", function () {
   &__imgProfile {
     position: relative;
     top: 5px;
-    height: 30px;
-    width: 30px;
+    height: 26px;
+    width: 26px;
     margin-right: 10px;
     border-radius: 0.25rem;
   }

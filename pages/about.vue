@@ -1,13 +1,28 @@
 <template>
-<div id="box">
-    <div class="image">
-        <img src="http://s18.postimg.org/il7hbk7i1/image.png" />
-    </div>
-    <div class="text">
-        <a class="mylink">linkk</a>
-    </div>
+<div >
+    <ul class="container__users" >
+        <li class="dropdown" v-for="(user, index) in users" :key="index">
+          
+            <div >
+                  <img
+              class="img__profile"
+              :src="user.img"
+              alt="image user"
+            />
+            
+            </div>
+            <div class="dropdown-content">
+                <h1>haz azekajzle azekja zelazje azklej azlazekl </h1>
+                <a >{{ user.name }}</a>
+            </div>
+            
+          
+         
+        </li>
+    </ul>
+  
+  
 </div>
-
  
 </template>
 <script>
@@ -15,38 +30,71 @@
 import WhoWatching from "../components/main/WhoWatching.vue";
 export default {
   components: {  WhoWatching },
-  data: () => ({
-     
-      rating: 4,
-    }),
+  data () {
+  return {
+   showModal: true,
+   users: [
+    {
+      name: "Kevlin",
+      img: "https://images.unsplash.com/photo-1618641986557-1ecd230959aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+    },
+    {
+      name: "Dude",
+      img: "https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
+    },
+  ],
+  }
+ }
 };
 
 
 </script>
 
 <style lang="scss" scoped>
-.image img {
-   display:block;
-   width: 250px;
-   height: 250px;
+.container__users{
+    display: flex;
+    justify-content: space-between;
+    
+}
+img{
+    width: 200px;
+    height: 200px;
 }
 
-.image img {        
-    -moz-transform:scale(1);
-    -webkit-transform:scale(1);
-    -o-transform:scale(1);
-    transform:scale(1);
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    transition: all 1s ease;
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
 }
 
-#box:hover .image img {    
-    cursor: pointer;
-    -moz-transform:scale(1.5);
-    -webkit-transform:scale(1.5);
-    -o-transform:scale(1.5);
-    transform:scale(1.5);
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
 }
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+// /* Change the background color of the dropdown button when the dropdown content is shown */
+// .dropdown:hover .dropbtn {
+//   background-color: #3e8e41;
+// }
 </style>
