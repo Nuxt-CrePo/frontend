@@ -74,7 +74,7 @@ h3 {
   font-family: $roboto-slab;
   color: white;
   font-size: 1rem;
-  font-weight: bold;
+
 }
 .icons {
   color: white;
