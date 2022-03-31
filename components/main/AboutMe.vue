@@ -37,7 +37,7 @@
     </div>
     <div class="buttons">
       <div>
-        <button class="btn__continue">
+        <button class="btn__continue" >
           <font-awesome-icon class="iconPlay" :icon="['fas', 'play']" />Continue
         </button>
       </div>
