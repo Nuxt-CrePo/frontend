@@ -76,7 +76,6 @@ img {
   border-radius: 0.25rem;
 }
 
-/* The container <div> - needed to position the dropdown content */
 .dropdown {
   position: relative;
   display: inline-block;
