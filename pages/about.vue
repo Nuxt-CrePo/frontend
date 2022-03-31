@@ -1,26 +1,8 @@
 <template>
-<div >
-    <ul class="container__users" >
-        <li class="dropdown" v-for="(user, index) in users" :key="index">
-          
-            <div >
-                  <img
-              class="img__profile"
-              :src="user.img"
-              alt="image user"
-            />
-            
-            </div>
-            <div class="dropdown-content">
-                <h1>haz azekajzle azekja zelazje azklej azlazekl </h1>
-                <a >{{ user.name }}</a>
-            </div>
-            
-          
-         
-        </li>
-    </ul>
-  
+<div>
+   <vue-typed-js :loop="true" :startDelay="1000" :typeSpeed="100" :backSpeed="100" :strings="['Front-end!', 'Back-end!', 'Fullstack!']">
+  <h1>Hi, i'm Kevlin, web developer <span class="typing"></span></h1>
+</vue-typed-js>
   
 </div>
  

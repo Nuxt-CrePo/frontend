@@ -97,6 +97,7 @@ export default {
     color: gray;
     text-decoration: none;
     display: grid;
+    font-weight: bold;
   }
   & :hover img {
     border: solid 2px #fff;
