@@ -365,9 +365,13 @@ window.addEventListener("scroll", function () {
   .navbar__list.active {
     z-index: 1;
     left: 0;
+    top: 70px;
   }
   .navbar__items {
     margin: 2.5rem 0;
+ 
+      align-self: center;
+
   }
   .hamburger {
     display: block;

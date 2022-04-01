@@ -56,9 +56,9 @@ export default {};
 
 <style lang="scss" scoped>
 .about {
-  position: relative;
-  top: 25rem;
-  left: 5rem;
+   position: absolute;
+  bottom: 5rem;
+  left: 3rem;
 }
 h1 {
   font-family: $roboto-slab;
