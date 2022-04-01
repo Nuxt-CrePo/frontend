@@ -3,13 +3,12 @@
     <!-- <p v-if="isLoading">Loading....</p> -->
     <h1>Popular projects</h1>
     <ul class="container__users">
+      
       <li class="dropdown" v-for="(repo, index) in projectsGithub" :key="index">
         <div>
           <img class="image__repo" :src="repo.homepage" alt="image" />
         </div>
         <div class="hide__content">
-          <h2>{{ repo.name }}</h2>
-          <span>App, Website 2022</span>
           <div class="button__content">
             <div class="button__1" aria-label="Continue" data-balloon-pos="up">
               <i
@@ -18,20 +17,33 @@
                   :icon="['fas', 'circle-play']"
               /></i>
             </div>
+            <div class="button__2" aria-label="Add to my list" data-balloon-pos="up">
+              <i
+                ><img
+                  class="iconPlus"
+                  src="https://cdn.discordapp.com/attachments/832599917439483904/959469430021173248/output-onlinepngtools3.png"
+              /></i>
+            </div>
             <div
-              class="button__2"
+              class="button__3"
               v-on:click="setProject(repo)"
               @click="showModal = true"
               aria-label="More info"
               data-balloon-pos="up"
             >
               <i
-                ><font-awesome-icon
+                ><img
                   class="iconDown"
-                  :icon="['fas', 'circle-chevron-down']"
+                  src="https://cdn.discordapp.com/attachments/832599917439483904/959468251979587624/output-onlinepngtools2.png"
               /></i>
+              
             </div>
           </div>
+         <span class="text__reco">Recommandé à 98%</span>
+          <h2>{{ repo.name }}</h2>
+          
+          <span>App, Website 2022</span>
+          
         </div>
       </li>
     </ul>
@@ -130,6 +142,11 @@ export default {
   min-width: 100%;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   // z-index: 1;
+  .text__reco {
+    color: #46d369;
+    font-weight: 700;
+  }
+
 }
 
 .hide__content span {
@@ -160,11 +177,9 @@ export default {
 }
 
 .button__content {
-  float: right;
-  display: flex;
-  position: relative;
-  top: -30px;
-  right: 10px;
+ display: flex;
+position: relative;
+margin: 10px;
 }
 .button__1 {
   display: block;
@@ -174,18 +189,28 @@ export default {
   --balloon-border-radius: 0.25rem;
   --balloon-color: rgb(132, 129, 129);
   --balloon-font-size: 11px;
-  --balloon-move: 100px;
+  --balloon-move: 50px;
 }
 
 .button__2 {
   display: block;
-  padding: 3px;
   text-align: justify;
   cursor: pointer;
   --balloon-border-radius: 0.25rem;
   --balloon-color: rgb(132, 129, 129);
   --balloon-font-size: 11px;
-  --balloon-move: 100px;
+  --balloon-move: 50px;
+}
+
+.button__3 {
+  position: relative;
+top: -5px;
+right: 10px;
+  cursor: pointer;
+  --balloon-border-radius: 0.25rem;
+  --balloon-color: rgb(132, 129, 129);
+  --balloon-font-size: 11px;
+  --balloon-move: 50px;
 }
 
 h1 {
@@ -197,14 +222,17 @@ h1 {
 }
 
 .iconDown {
-  height: 30px;
-  width: 30px;
+  height: 45px;
+width: 46px;
 }
 .iconPlay {
-  height: 30px;
-  width: 30px;
+  height: 28px;
+  width: 27px;
 }
-
+.iconPlus {
+   height: 32px;
+width: 32px;
+}
 //popup
 
 .modal-overlay {
