@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper__projects">
+     
     <!-- <p v-if="isLoading">Loading....</p> -->
     <h1>Popular projects</h1>
     <ul class="container__users">
@@ -18,7 +19,7 @@
                   :icon="['fas', 'circle-play']"
               /></i>
             </div>
-            <div class="button__2" v-on:click="testAlert()">
+            <div class="button__2" @click="showModal = true">
               <i
                 ><font-awesome-icon
                   class="iconDown"
@@ -29,6 +30,18 @@
         </div>
       </li>
     </ul>
+    <transition name="fade" appear>
+  <div class="modal-overlay" v-if="showModal" @click="showModal = false"></div>
+ </transition>     
+ <transition name="slide" appear>
+  <div class="modal" v-if="showModal">
+   <h1>Lorem Ipsum  SS</h1>
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem provident explicabo accusamus laudantium voluptatum nobis sed nesciunt neque possimus molestiae?</p>
+   <button class="button" @click="showModal = false">
+    Close Modal
+   </button>
+  </div>
+ </transition>
   </div>
 </template>
 
@@ -37,6 +50,7 @@ export default {
   data() {
     return {
       isLoading: true,
+      showModal: false,
     };
   },
   computed: {
@@ -158,5 +172,66 @@ h1 {
 .iconPlay {
   height: 30px;
   width: 30px;
+}
+
+//popup
+
+.modal-overlay {
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ z-index: 98;
+ background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+ position: fixed;
+ top: 25%;
+ left: 37%;
+//  transform: translate(-50%, -50%);
+ z-index: 99;
+ 
+ width: 100%;
+ max-width: 400px;
+ background-color: #FFF;
+ border-radius: 16px;
+ 
+ padding: 25px;
+ 
+ h1 {
+  color: #222;
+  font-size: 32px;
+  font-weight: 900;
+  margin-bottom: 15px;
+ }
+ 
+ p {
+  color: #666;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 15px;
+ }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+ transition: opacity .5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+ opacity: 0;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+ transition: transform .3s;
+}
+
+.slide-enter,
+.slide-leave-to {
+ transform: scale(0.1);
 }
 </style>
