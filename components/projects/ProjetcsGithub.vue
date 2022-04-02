@@ -3,7 +3,6 @@
     <!-- <p v-if="isLoading">Loading....</p> -->
     <h1>Popular projects</h1>
     <ul class="container__users">
-      
       <li class="dropdown" v-for="(repo, index) in projectsGithub" :key="index">
         <div>
           <img class="image__repo" :src="repo.homepage" alt="image" />
@@ -17,7 +16,11 @@
                   :icon="['fas', 'circle-play']"
               /></i>
             </div>
-            <div class="button__2" aria-label="Add to my list" data-balloon-pos="up">
+            <div
+              class="button__2"
+              aria-label="Add to my list"
+              data-balloon-pos="up"
+            >
               <i
                 ><img
                   class="iconPlus"
@@ -36,17 +39,19 @@
                   class="iconDown"
                   src="https://cdn.discordapp.com/attachments/832599917439483904/959468251979587624/output-onlinepngtools2.png"
               /></i>
-              
             </div>
           </div>
-         <span class="text__reco">Recommandé à 98%</span>
-          <h2>{{ repo.name }}</h2>
-          
-          <span>App, Website 2022</span>
-          
+          <div class="text__hidden">
+            <span class="text__reco">Recommandé à 99%</span>
+            <h2>{{ repo.name }}</h2>
+
+            <span>App, Website 2022</span>
+          </div>
         </div>
       </li>
     </ul>
+
+    <!-- POPUP -->
     <transition name="fade" appear>
       <div
         class="modal-overlay"
@@ -57,16 +62,88 @@
 
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
-        <img class="image__popup" :src="project.homepage" alt="image project" />
-        <span class="text__reco">Recommandé à 98%</span>
-        <h1>{{ project.name }}</h1>
-        <h1>{{ project.id }}</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
-          provident explicabo accusamus laudantium voluptatum nobis sed nesciunt
-          neque possimus molestiae?
-        </p>
-        <button class="button" @click="showModal = false">Close Modal</button>
+        <div class="banner__popup">
+          <img
+            class="image__popup"
+            :src="project.homepage"
+            alt="image project"
+          />
+          <div class="buttons__popup">
+            <a class="btn__visit" target="_blank" :href="project.html_url">
+              <font-awesome-icon
+                class="iconVisit"
+                :icon="['fas', 'up-right-from-square']"
+              />Visit
+            </a>
+            <div
+              class="add__popup"
+              aria-label="Add to my list"
+              data-balloon-pos="up"
+            >
+              <i
+                ><img
+                  class="iconPlus__popup"
+                  src="https://cdn.discordapp.com/attachments/832599917439483904/959469430021173248/output-onlinepngtools3.png"
+              /></i>
+            </div>
+          </div>
+        </div>
+        <div class="container__popup">
+          <div class="leftside__popup">
+            <h1>{{ project.name }}</h1>
+            <div class="div__reco">
+              <span class="text__reco">Recommandé à 99%</span>
+              <p>2022</p>
+              <p class="text__18">18+</p>
+            </div>
+            <input type="checkbox" class="read-more-state" id="text" />
+            <ul class="read-more-wrap">
+              <li>
+                <p class="text__description">
+                  {{ project.description }}
+                </p>
+              </li>
+              <li>
+                <p class="text__description">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Voluptatem provident explicabo accusamus laudantium voluptatum
+                  nobis sed nesciunt neque possimus molestiae?
+                </p>
+              </li>
+              <li class="read-more-target">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Voluptatem provident explicabo accusamus laudantium voluptatum
+                nobis sed nesciunt neque possimus molestiae?
+              </li>
+            </ul>
+
+            <label for="text" class="read-more-trigger"></label>
+          </div>
+          <div class="rightside__popup">
+            <ul>
+              <li class="rightside__text">
+                Director:
+                <a class="rightside__text2"> Kevlin Susanto </a>
+              </li>
+              <li class="rightside__text">
+                Genre:
+                <a class="rightside__text2"> App, Website </a>
+              </li>
+              <li class="rightside__text">
+                Duration:
+                <a class="rightside__text2"> 1 month </a>
+              </li>
+              <li class="rightside__text">
+                Language:
+                <a class="rightside__text2">
+                  {{ project.language }}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- <button class="button" @click="showModal = false">Close Modal</button> -->
       </div>
     </transition>
   </div>
@@ -104,7 +181,6 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper__projects {
-  
   padding: 2%;
 }
 .image__repo {
@@ -116,12 +192,11 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  gap: 1%;
   list-style-type: none;
   padding-right: 5%;
   padding-left: 5%;
 }
-
 
 .dropdown {
   position: relative;
@@ -129,10 +204,9 @@ export default {
   margin-bottom: 5%;
   transition: transform 0.2s;
   &:hover {
-    transform: scale(1.5);
+    transform: scale(1.2);
     z-index: 1;
   }
-  
 }
 
 .hide__content {
@@ -146,24 +220,20 @@ export default {
     color: #46d369;
     font-weight: 700;
   }
-
 }
 
 .hide__content span {
   color: white;
-  padding: 12px;
-  font-size: 10px;
+  font-size: 11px;
   width: 135px;
 }
 
 .hide__content h2 {
   font-family: $open-sans;
   color: #fff;
-  font-size: 1rem;
-  line-height: 1rem;
+  font-size: 1.125rem;
   font-weight: bold;
-  padding: 12px;
-  width: 135px;
+  width: 100%;
 }
 
 .hide__content a:hover {
@@ -177,9 +247,9 @@ export default {
 }
 
 .button__content {
- display: flex;
-position: relative;
-margin: 10px;
+  display: flex;
+  position: relative;
+  margin: 10px;
 }
 .button__1 {
   display: block;
@@ -189,7 +259,7 @@ margin: 10px;
   --balloon-border-radius: 0.25rem;
   --balloon-color: rgb(132, 129, 129);
   --balloon-font-size: 11px;
-  --balloon-move: 50px;
+  --balloon-move: 30px;
 }
 
 .button__2 {
@@ -199,18 +269,24 @@ margin: 10px;
   --balloon-border-radius: 0.25rem;
   --balloon-color: rgb(132, 129, 129);
   --balloon-font-size: 11px;
-  --balloon-move: 50px;
+  --balloon-move: 30px;
 }
 
 .button__3 {
   position: relative;
-top: -5px;
-right: 10px;
+  top: -5px;
+  left: 7.8rem;
   cursor: pointer;
   --balloon-border-radius: 0.25rem;
   --balloon-color: rgb(132, 129, 129);
   --balloon-font-size: 11px;
-  --balloon-move: 50px;
+  --balloon-move: 30px;
+}
+
+.text__hidden {
+  position: relative;
+  bottom: 0.8rem;
+  margin: 10px;
 }
 
 h1 {
@@ -223,15 +299,15 @@ h1 {
 
 .iconDown {
   height: 45px;
-width: 46px;
+  width: 46px;
 }
 .iconPlay {
   height: 28px;
   width: 27px;
 }
 .iconPlus {
-   height: 32px;
-width: 32px;
+  height: 32px;
+  width: 32px;
 }
 //popup
 
@@ -248,21 +324,56 @@ width: 32px;
 .modal {
   position: fixed;
   top: 10%;
-  left: 35%;
+  left: 28%;
   //  transform: translate(-50%, -50%);
   z-index: 99;
-  width: 500px;
-  height: 600px;
+  width: 700px;
+  height: 620px;
   background-color: #181818;
   border-radius: 10px;
   margin-bottom: 2rem;
-  // overflow-y: scroll;
+  overflow-y: scroll;
 
   .image__popup {
-    border-radius: 10px 10px 0px 0px;
-    width: 500px;
-    height: 300px;
-  
+    width: 700px;
+    height: 400px;
+    mask-image: linear-gradient(0deg, transparent, #141414 40%);
+  }
+  .banner__popup {
+    position: relative;
+  }
+  .buttons__popup {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    display: flex;
+  }
+  .iconPlus__popup {
+    width: 50px;
+    height: 50px;
+  }
+  .btn__visit {
+    border-radius: 6px;
+    min-height: 37px;
+    font-size: 16px;
+    padding-left: 1.7rem;
+    padding-right: 1.7rem;
+    background-color: white;
+    margin: 0 10px 0 0;
+    font-weight: 600;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    transition: 0.3s;
+    color: #141414;
+    &:hover {
+      background-color: #c8c3c3;
+    }
+    & .iconVisit {
+      height: 28px;
+      width: 27px;
+      margin-right: 10px;
+    }
   }
   .text__reco {
     color: #46d369;
@@ -278,9 +389,87 @@ width: 32px;
 
   p {
     color: white;
-    font-size: 18px;
-    font-weight: 400;
+    font-size: 15px;
+    font-weight: 500;
     margin-bottom: 15px;
+  }
+
+  //readmore
+  .read-more-state {
+    display: none;
+  }
+
+  .read-more-target {
+    opacity: 0;
+    max-height: 0;
+    font-size: 0;
+    transition: 0.25s ease;
+  }
+
+  .read-more-state:checked ~ .read-more-wrap .read-more-target {
+    opacity: 1;
+    font-size: inherit;
+    max-height: 999em;
+  }
+
+  .read-more-state ~ .read-more-trigger:before {
+    content: "Show more";
+  }
+
+  .read-more-state:checked ~ .read-more-trigger:before {
+    content: "Show less";
+  }
+
+  .read-more-trigger {
+    cursor: pointer;
+    display: block;
+    align-items: center;
+    text-align: center;
+    padding: 0px 10px;
+    color: #fff;
+    font-size: 0.9em;
+    line-height: 2;
+    background: transparent;
+    &:hover {
+        text-decoration: underline;
+    }
+  }
+}
+
+.container__popup {
+  display: flex;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.div__reco {
+  display: flex;
+  gap: 8px;
+}
+
+.text__18 {
+  border: 1px solid;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+.leftside__popup {
+  margin-right: 2%;
+  width: 175%;
+}
+.rightside__popup {
+  margin-top: 3rem;
+  width: 35rem;
+
+  .rightside__text {
+    margin-bottom: 1rem;
+    color: #707070;
+    font-weight: 200;
+    font-size: 14px;
+  }
+  .rightside__text2 {
+    color: #fff;
   }
 }
 

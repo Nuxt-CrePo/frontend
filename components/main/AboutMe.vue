@@ -84,7 +84,7 @@ h3 {
     --balloon-border-radius: 0.25rem;
     --balloon-color: #2a5fa5;
     --balloon-font-size: 15px;
-    --balloon-move: 100px;
+    --balloon-move: 30px;
 
     & .iconFont {
       width: 30px;
