@@ -7,7 +7,8 @@ export default {
                 id: repo.id,
                 name: repo.name,
                 description: repo.description,
-                img: repo.homepage
+                img: repo.homepage,
+                language: repo.language
             }
 
             let indexOfExistingProject = projectBD.findIndex(
@@ -36,7 +37,8 @@ export default {
                 id: this.project.id,
                 name: this.project.name,
                 description: this.project.description,
-                img: this.project.homepage
+                img: this.project.homepage,
+                language: this.project.language
             }
 
             let indexOfExistingProject = projectBD.findIndex(
@@ -66,8 +68,8 @@ export default {
         clearWishlists() {
             localStorage.removeItem('wishlists');
         },
-        removeProject(project, projectDB) {
-            projectDB = JSON.parse(localStorage.getItem('wishlists'))
+        removeProject(project) {
+            let projectDB = JSON.parse(localStorage.getItem('wishlists'))
             let indexOfExistingProject = projectDB.findIndex(
                 (el) => el.id === project.id
             )

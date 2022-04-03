@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button class="btn btn-outline-success my-2 my-sm-0" @click.prevent="btnFunction">
+        <button class="btn" @click.prevent="btnFunction">
             {{btnTitle}}
         </button>
     </div>
@@ -17,4 +17,14 @@
 </script>
 
 <style lang="scss" scoped>
+.btn {
+    color: grey;
+    border: solid 1px grey;
+    padding: 1%;
+
+    &:hover{
+        color: white;
+        border: solid 1px white;
+    }
+}
 </style>

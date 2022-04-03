@@ -335,19 +335,17 @@ h1 {
 
 .modal {
   position: fixed;
-  top: 10%;
-  left: 28%;
-  //  transform: translate(-50%, -50%);
+left: 25vw;
+top: 7vh;
   z-index: 99;
-  width: 700px;
-  height: 620px;
   background-color: #181818;
-  border-radius: 10px;
-  margin-bottom: 2rem;
-  overflow-y: scroll;
+border-radius: 10px;
+overflow-y: scroll;
+width: 48vw;
+height: 90vh;
 
   .image__popup {
-    width: 700px;
+    width: 48vw;
     height: 400px;
     mask-image: linear-gradient(0deg, transparent, #141414 40%);
   }
