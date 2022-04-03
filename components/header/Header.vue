@@ -27,6 +27,11 @@
           <a>Experience</a>
         </NuxtLink>
       </li>
+         <li class="navbar__items" v-on:click="openMenu">
+        <NuxtLink to="/wishlists">
+          <a>Wishlist</a>
+        </NuxtLink>
+      </li>
     </ul>
     <button
       :class="isOpen === false ? 'hamburger' : 'hamburger' + ' ' + 'active'"

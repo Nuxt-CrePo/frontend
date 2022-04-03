@@ -1,6 +1,6 @@
 <template>
   <div class="container__default">
-    <Header v-if="isLoggedIn && isIndex"/>
+    <Header v-if="isLoggedIn && isIndex || isWishlist"/>
     <div class="body__default">
       <Nuxt />
     </div>
@@ -29,8 +29,10 @@ export default {
   computed: {
     isIndex() {
       return this.$route.name === "index";
-      
     },
+    isWishlist() {
+      return this.$route.name === "wishlists"
+    }
   },
 };
 </script>

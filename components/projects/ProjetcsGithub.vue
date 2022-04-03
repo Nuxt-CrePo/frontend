@@ -16,8 +16,10 @@
                   :icon="['fas', 'circle-play']"
               /></i>
             </div>
+
             <div
               class="button__2"
+              v-on:click="addToWishlistsRepo(repo)"
               aria-label="Add to my list"
               data-balloon-pos="up"
             >
@@ -76,6 +78,7 @@
               />Visit
             </a>
             <div
+              v-on:click="addToWishlists()"
               class="add__popup"
               aria-label="Add to my list"
               data-balloon-pos="up"
@@ -114,7 +117,9 @@
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Voluptatem provident explicabo accusamus laudantium voluptatum
                 nobis sed nesciunt neque possimus molestiae?
+                
               </li>
+              
             </ul>
 
             <label for="text" class="read-more-trigger"></label>
@@ -150,7 +155,13 @@
 </template>
 
 <script>
+import Button from "../button/Button.vue"
+import Project from "../../mixins/project"
+
 export default {
+  components: {
+    Button
+  },
   data() {
     return {
       isLoading: true,
@@ -176,6 +187,7 @@ export default {
       this.project = repo;
     },
   },
+  mixins: [Project]
 };
 </script>
 
