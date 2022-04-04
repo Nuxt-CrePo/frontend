@@ -6,7 +6,7 @@
         </NuxtLink>
   </div>
  <video class="video_player" id="player" width="100%" controls muted autoplay preload="auto">
-  <source src="../video/sneaker_video.webm"
+  <source src="../video/trybuy.webm"
             type="video/webm"/>
             
 </video>
