@@ -46,7 +46,7 @@
             <span class="text__reco">Recommandé à 99%</span>
             <h2>{{ repo.name }}</h2>
 
-            <span>App, Website 2022</span>
+            <span>App, Website - {{years[index]}}</span>
           </div>
         </div>
       </li>
@@ -83,7 +83,7 @@
             <h1>{{ project.name }}</h1>
             <div class="div__reco">
               <span class="text__reco">Recommandé à 99%</span>
-              <p>2022</p>
+              <p>{{project_year}}</p>
               <p class="text__18">18+</p>
             </div>
             <input type="checkbox" class="read-more-state" id="text" />
@@ -155,8 +155,9 @@ export default {
     return {
       projectArray: [],
       project: [],
+      years: [],
       showModal: false,
-
+      project_year: ""
     };
   },
   components: {
@@ -174,12 +175,28 @@ export default {
     },
     setProject(repo) {
       this.project = repo;
+      const str = this.project.year;
+        const words = str.split("-");
+        const year = words[0];
+        this.project_year = year;
+      console.log(this.project_year)
     },
     
   },
   mounted() {
     this.projectArray = this.getProjectWishlists();
-    
+    console.log(this.projectArray)
+    for (
+        var i = 0;
+        i < this.projectArray.length;
+        i++
+      ) {
+        const str = this.projectArray[i].year;
+        const words = str.split("-");
+        const year = words[0];
+        this.years.push(year);  
+       console.log(year)  
+      }
   },
   
   mixins: [Project],
@@ -194,7 +211,8 @@ z-index: 0;
 background-color: #141414;
 margin-right: auto;
 margin-left: auto;
-padding: 5%;
+padding:1.5rem;
+padding-top: 7rem;
 }
 .image__repo {
   width: 250px;

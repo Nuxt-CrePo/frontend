@@ -47,7 +47,7 @@
             <span class="text__reco">Recommandé à 99%</span>
             <h2>{{ repo.name }}</h2>
 
-            <span>App, Website 2022</span>
+            <span >App, Website - {{years[index]}}</span>
           </div>
         </div>
       </li>
@@ -96,7 +96,7 @@
             <h1>{{ project.name }}</h1>
             <div class="div__reco">
               <span class="text__reco">Recommandé à 99%</span>
-              <p>2022</p>
+              <p>{{project_year}}</p>
               <p class="text__18">18+</p>
             </div>
             <input type="checkbox" class="read-more-state" id="text" />
@@ -117,9 +117,7 @@
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Voluptatem provident explicabo accusamus laudantium voluptatum
                 nobis sed nesciunt neque possimus molestiae?
-                
               </li>
-              
             </ul>
 
             <label for="text" class="read-more-trigger"></label>
@@ -155,22 +153,38 @@
 </template>
 
 <script>
-import Button from "../button/Button.vue"
-import Project from "../../mixins/project"
+import Button from "../button/Button.vue";
+import Project from "../../mixins/project";
+import project from "../../mixins/project";
 
 export default {
   components: {
-    Button
+    Button,
   },
   data() {
     return {
       isLoading: true,
       showModal: false,
       project: [],
+      years: [],
+      project_year: ""
     };
   },
   computed: {
     projectsGithub() {
+      //convert date format to year
+      for (
+        var i = 0;
+        i < this.$store.state.projects.projectsGithub.length;
+        i++
+      ) {
+        const str = this.$store.state.projects.projectsGithub[i].created_at;
+        const words = str.split("-");
+        const year = words[0];
+
+        this.years.push(year)    
+      }
+    
       return this.$store.state.projects.projectsGithub;
     },
   },
@@ -178,6 +192,7 @@ export default {
     // dispatch the getGithubProjects action which commits a mutation to update the state
     this.isLoading = false;
     this.$store.dispatch("projects/getGithubProjects");
+    this.years
   },
   methods: {
     testAlert: () => {
@@ -185,15 +200,20 @@ export default {
     },
     setProject(repo) {
       this.project = repo;
+       const str = this.project.created_at;
+        const words = str.split("-");
+        const year = words[0];
+        this.project_year = year;
+      console.log(this.project_year)
     },
   },
-  mixins: [Project]
+  mixins: [Project],
 };
 </script>
 
 <style lang="scss" scoped>
 .wrapper__projects {
-  padding: 2%;
+  padding: 1.5rem;
 }
 .image__repo {
   width: 250px;
@@ -335,14 +355,14 @@ h1 {
 
 .modal {
   position: fixed;
-left: 25vw;
-top: 7vh;
+  left: 25vw;
+  top: 7vh;
   z-index: 99;
   background-color: #181818;
-border-radius: 10px;
-overflow-y: scroll;
-width: 48vw;
-height: 90vh;
+  border-radius: 10px;
+  overflow-y: scroll;
+  width: 48vw;
+  height: 90vh;
 
   .image__popup {
     width: 48vw;
@@ -441,7 +461,7 @@ height: 90vh;
     line-height: 2;
     background: transparent;
     &:hover {
-        text-decoration: underline;
+      text-decoration: underline;
     }
   }
 }

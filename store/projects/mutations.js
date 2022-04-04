@@ -1,8 +1,5 @@
 export const setProjectsGithub = (state, projectsGithub) => {
     state.projectsGithub = projectsGithub;
-    console.log(projectsGithub)
-}
+    console.log(projectsGithub.length)
 
-export const increment = (state) => {
-    state.counter++;
 }
