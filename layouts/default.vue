@@ -4,7 +4,7 @@
     <div class="body__default">
       <Nuxt />
     </div>
-    <Footer v-if="isLoggedIn"/>
+    <Footer v-if="isLoggedIn && !isWatch"/>
   </div>
 </template>
 
@@ -31,7 +31,10 @@ export default {
       return this.$route.name === "index";
     },
     isWishlist() {
-      return this.$route.name === "wishlists"
+      return this.$route.name === "wishlists";
+    },
+    isWatch() {
+      return this.$route.name === "watch";
     }
   },
 };

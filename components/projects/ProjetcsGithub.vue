@@ -9,13 +9,17 @@
         </div>
         <div class="hide__content">
           <div class="button__content">
+            
             <div class="button__1" aria-label="Continue" data-balloon-pos="up">
+              <NuxtLink to="/watch">
               <i
                 ><font-awesome-icon
                   class="iconPlay"
                   :icon="['fas', 'circle-play']"
               /></i>
+                 </NuxtLink>
             </div>
+         
 
             <div
               class="button__2"

@@ -38,7 +38,10 @@
     <div class="buttons">
       <div>
         <button class="btn__continue" >
-          <font-awesome-icon class="iconPlay" :icon="['fas', 'play']" />Continue
+          <font-awesome-icon class="iconPlay" :icon="['fas', 'play']" />
+          <NuxtLink to="/watch">
+          Continue
+          </NuxtLink>
         </button>
       </div>
       <div>
