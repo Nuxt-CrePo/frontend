@@ -27,7 +27,7 @@
           <a>Experience</a>
         </NuxtLink>
       </li>
-         <li class="navbar__items" v-on:click="openMenu">
+      <li class="navbar__items" v-on:click="openMenu">
         <NuxtLink to="/wishlists">
           <a>Wishlist</a>
         </NuxtLink>
@@ -101,6 +101,7 @@
               <a href="#">Github</a>
               <a href="#">Linkedin</a>
               <hr />
+
               <a v-on:click="setLogoutUser()">Logout</a>
             </div>
           </a>
@@ -128,10 +129,14 @@ export default {
       userImg: "",
     };
   },
+ 
   mounted() {
     this.user = JSON.parse(localStorage.getItem("user"));
-    this.userName = this.user[0].name;
-    this.userImg = this.user[0].img;
+    if (this.user) {
+      this.userName = this.user[0].name;
+      this.userImg = this.user[0].img;
+    }
+    this.searchInput =  this.$store.state.projects.searchInput;
   },
   methods: {
     openMenu() {
@@ -140,10 +145,10 @@ export default {
     searchMovie() {
       this.$router.push(`/search?query=${this.searchInput}`);
     },
-     setLogoutUser() {
-    localStorage.removeItem("user"); 
-    window.location.reload()
-  }
+    setLogoutUser() {
+      localStorage.removeItem("user");
+      window.location.href = "/";
+    },
   },
 };
 
@@ -158,7 +163,6 @@ window.addEventListener("scroll", function () {
   float: left;
   overflow: hidden;
 }
-
 
 .dropdown .dropbtn {
   font-size: 16px;
@@ -184,10 +188,14 @@ window.addEventListener("scroll", function () {
   top: 70px;
   right: 50px;
 
-  & hr { display: block; height: 1px;
-    border: 0; border-top: 1px solid #131111;
-    margin: 1em 0; padding: 0; }
-  
+  & hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #131111;
+    margin: 1em 0;
+    padding: 0;
+  }
 }
 
 .dropdown-content a {
@@ -374,9 +382,8 @@ window.addEventListener("scroll", function () {
   }
   .navbar__items {
     margin: 2.5rem 0;
- 
-      align-self: center;
 
+    align-self: center;
   }
   .hamburger {
     display: block;

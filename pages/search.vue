@@ -1,31 +1,39 @@
 <template>
-  <div class="wishlists">
-    <h1>My list</h1>
-     <ul class="container__users">
-      <li class="dropdown" v-for="(repo, index) in projectArray" :key="repo.id">
+  <div class="wrapper__projects">
+    <!-- <p v-if="isLoading">Loading....</p> -->
+<input v-model="value">
+    <p>{{inputted}}</p>
+    <ul class="container__users">
+      <li
+        class="dropdown"
+        v-for="(repo, index) in filteredProjects"
+        :key="index"
+      >
         <div>
-          <img class="image__repo" :src="repo.img" alt="image" />
+          <img class="image__repo" :src="repo.homepage" alt="image" />
         </div>
         <div class="hide__content">
           <div class="button__content">
             <div class="button__1" aria-label="Continue" data-balloon-pos="up">
-              <i
-                ><font-awesome-icon
-                  class="iconPlay"
-                  :icon="['fas', 'circle-play']"
-              /></i>
+              <NuxtLink to="/watch">
+                <i
+                  ><font-awesome-icon
+                    class="iconPlay"
+                    :icon="['fas', 'circle-play']"
+                /></i>
+              </NuxtLink>
             </div>
 
             <div
               class="button__2"
-              v-on:click="()=>deleteProject(index)"
-              aria-label="Delete from my list "
+              v-on:click="addToWishlistsRepo(repo)"
+              aria-label="Add to my list"
               data-balloon-pos="up"
             >
               <i
                 ><img
                   class="iconPlus"
-                  src="https://cdn.discordapp.com/attachments/832599917439483904/960274614301384776/output-onlinepngtools4.png"
+                  src="https://cdn.discordapp.com/attachments/832599917439483904/959469430021173248/output-onlinepngtools3.png"
               /></i>
             </div>
             <div
@@ -46,7 +54,7 @@
             <span class="text__reco">Recommandé à 99%</span>
             <h2>{{ repo.name }}</h2>
 
-            <span>App, Website - {{years[index]}}</span>
+            <span>App, Website - {{ years[index] }}</span>
           </div>
         </div>
       </li>
@@ -66,7 +74,7 @@
         <div class="banner__popup">
           <img
             class="image__popup"
-            :src="project.img"
+            :src="project.homepage"
             alt="image project"
           />
           <div class="buttons__popup">
@@ -76,6 +84,18 @@
                 :icon="['fas', 'up-right-from-square']"
               />Visit
             </a>
+            <div
+              v-on:click="addToWishlists()"
+              class="add__popup"
+              aria-label="Add to my list"
+              data-balloon-pos="up"
+            >
+              <i
+                ><img
+                  class="iconPlus__popup"
+                  src="https://cdn.discordapp.com/attachments/832599917439483904/959469430021173248/output-onlinepngtools3.png"
+              /></i>
+            </div>
           </div>
         </div>
         <div class="container__popup">
@@ -83,7 +103,7 @@
             <h1>{{ project.name }}</h1>
             <div class="div__reco">
               <span class="text__reco">Recommandé à 99%</span>
-              <p>{{project_year}}</p>
+              <p>{{ project_year }}</p>
               <p class="text__18">18+</p>
             </div>
             <input type="checkbox" class="read-more-state" id="text" />
@@ -104,9 +124,7 @@
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Voluptatem provident explicabo accusamus laudantium voluptatum
                 nobis sed nesciunt neque possimus molestiae?
-                
               </li>
-              
             </ul>
 
             <label for="text" class="read-more-trigger"></label>
@@ -135,92 +153,89 @@
           </div>
         </div>
 
+        <!-- <button class="button" @click="showModal = false">Close Modal</button> -->
       </div>
     </transition>
-    
-    <div class="btn_deleteall">
-      <Button btnTitle="Delete all" :btnFunction="clearAllProjects"/>
-      
-    </div>
-    
   </div>
 </template>
 
 <script>
 import Project from "../mixins/project";
-import Button from "../components/button/Button.vue"
-import HeaderLanding from "../components/header/HeaderLanding.vue"
+import Header from "../components/header/Header.vue";
+
 export default {
-  data: function () {
+  components: {
+    Header,
+  },
+  data() {
     return {
-      projectArray: [],
+      isLoading: true,
+      showModal: false,
       project: [],
       years: [],
-      showModal: false,
-      project_year: ""
+      project_year: "",
+      queryValue: "",
+      value: "",
+      inputted: ""
     };
   },
-  components: {
-   Button, HeaderLanding
+  computed: {
+    filteredProjects() {
+      return this.$store.state.projects.projectsGithub.filter((repo) => {
+        for (
+          var i = 0;
+          i < this.$store.state.projects.projectsGithub.length;
+          i++
+        ) {
+          const str = this.$store.state.projects.projectsGithub[i].created_at;
+          const words = str.split("-");
+          const year = words[0];
+
+          this.years.push(year);
+        }
+      
+        return repo.name.toLowerCase().match(this.queryValue.toLowerCase());
+      });
+    },
   },
-  methods: {
-    
-    clearAllProjects: function () {
-      this.clearWishlists();
-      this.projectArray = this.getProjectWishlists();
-    },
-    deleteProject: function (index) {
-      this.projectArray.splice(index, 1);
-      localStorage.setItem('wishlists', JSON.stringify(this.projectArray));
-    },
-    setProject(repo) {
-      this.project = repo;
-      const str = this.project.year;
-        const words = str.split("-");
-        const year = words[0];
-        this.project_year = year;
-      console.log(this.project_year)
-    },
-    
-  },
-  beforeCreate() {
-    if (!JSON.parse(localStorage.getItem("user"))) {
-      this.$router.push("/")
+  watch: {
+   '$route'() {
+        const params = new URLSearchParams(window.location.search)
+        this.queryValue = params.get('query');
+        console.log(this.queryValue)
     }
+  
   },
   mounted() {
-    this.projectArray = this.getProjectWishlists();
-    if(this.projectArray)
-    {
-      for (
-        var i = 0;
-        i < this.projectArray.length;
-        i++
-      ) {
-        const str = this.projectArray[i].year;
-        const words = str.split("-");
-        const year = words[0];
-        this.years.push(year);  
-      }
-
-    }
-    
+    // dispatch the getGithubProjects action which commits a mutation to update the state
+    this.isLoading = false;
+    this.$store.dispatch("projects/getGithubProjects");
   },
-  
+ 
+  methods: {
+    setProject(repo) {
+      this.project = repo;
+      const str = this.project.created_at;
+      const words = str.split("-");
+      const year = words[0];
+      this.project_year = year;
+      console.log(this.project_year);
+    },
+  },
   mixins: [Project],
 };
 </script>
 
 <style lang="scss" scoped>
-.wishlists {
+.wrapper__projects {
   position: relative;
-min-height: 100vh;
-z-index: 0;
-background-color: #141414;
-margin-right: auto;
-margin-left: auto;
-padding:1.5rem;
-padding-top: 7rem;
+  min-height: 100vh;
+  z-index: 0;
+  background-color: #141414;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 1.5rem;
+  padding-top: 7rem;
 }
 .image__repo {
   width: 250px;
@@ -291,10 +306,10 @@ padding-top: 7rem;
   margin: 10px;
 }
 .button__1 {
-  color: white;
   display: block;
   padding: 3px;
   text-align: justify;
+  color: white;
   cursor: pointer;
   --balloon-border-radius: 0.25rem;
   --balloon-color: rgb(132, 129, 129);
@@ -349,7 +364,6 @@ h1 {
   height: 32px;
   width: 32px;
 }
-
 //popup
 
 .modal-overlay {
@@ -364,14 +378,14 @@ h1 {
 
 .modal {
   position: fixed;
-left: 25vw;
-top: 7vh;
+  left: 25vw;
+  top: 7vh;
   z-index: 99;
   background-color: #181818;
-border-radius: 10px;
-overflow-y: scroll;
-width: 48vw;
-height: 90vh;
+  border-radius: 10px;
+  overflow-y: scroll;
+  width: 48vw;
+  height: 90vh;
 
   .image__popup {
     width: 48vw;
@@ -443,7 +457,6 @@ height: 90vh;
     max-height: 0;
     font-size: 0;
     transition: 0.25s ease;
-    color: white;
   }
 
   .read-more-state:checked ~ .read-more-wrap .read-more-target {
@@ -471,7 +484,7 @@ height: 90vh;
     line-height: 2;
     background: transparent;
     &:hover {
-        text-decoration: underline;
+      text-decoration: underline;
     }
   }
 }

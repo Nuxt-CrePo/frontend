@@ -159,7 +159,7 @@
 <script>
 import Button from "../button/Button.vue";
 import Project from "../../mixins/project";
-import project from "../../mixins/project";
+
 
 export default {
   components: {
@@ -196,7 +196,7 @@ export default {
     // dispatch the getGithubProjects action which commits a mutation to update the state
     this.isLoading = false;
     this.$store.dispatch("projects/getGithubProjects");
-    this.years
+    // this.years
   },
   methods: {
     testAlert: () => {
