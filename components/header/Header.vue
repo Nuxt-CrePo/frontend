@@ -96,10 +96,10 @@
                 :icon="['fas', 'caret-down']"
             /></i>
             <div class="dropdown-content">
-              <a href="#">About me</a>
-              <a href="#">Contact</a>
-              <a href="#">Github</a>
-              <a href="#">Linkedin</a>
+              <NuxtLink to="/">About Me</NuxtLink>
+              <a href="https://github.com/KevlinS" target="_blank">Github</a>
+              <a href="https://www.linkedin.com/in/kevlin-susanto-138b00146/"
+            target="_blank">Linkedin</a>
               <hr />
 
               <a v-on:click="setLogoutUser()">Logout</a>

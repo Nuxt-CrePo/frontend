@@ -1,18 +1,9 @@
 <template>
   <footer class="footer">
     <div class="footer__wrapper">
-      <p>Questions? Call 06060606</p>
-      <!-- <div class="footer__cols">
-        <ul>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Investor Relations</a></li>
-          <li><a href="#">Ways To Watch</a></li>
-          <li><a href="#">Corporate Information</a></li>
-          <li><a href="#">Netflix Originals</a></li>
-        </ul>
-       
-      </div> -->
-      <p class="copyright">©Copyright 2022 Kevlix  </p>
+      <p>😀 contact me 06060606</p>
+      <p>❤️ kevlin.susanto@ynov.com</p>
+      <p>🍕 made by : Kevlin 2022 </p>
     </div>
   </footer>
 </template>
@@ -36,7 +27,7 @@ export default {}
     font-size: 1.3rem;
   }
   & p {
-    margin-bottom: 2rem;
+    margin-bottom: 0.2rem;
     margin-left: 0;
   }
   &__cols {
