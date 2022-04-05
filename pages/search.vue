@@ -463,6 +463,7 @@ h1 {
     opacity: 1;
     font-size: inherit;
     max-height: 999em;
+    color: white;
   }
 
   .read-more-state ~ .read-more-trigger:before {
