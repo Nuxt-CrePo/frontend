@@ -54,7 +54,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -137,4 +143,6 @@ h3 {
       margin-right: 10px;
   }
 }
+
+
 </style>
