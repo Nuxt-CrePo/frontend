@@ -9,6 +9,7 @@
       </div>
       <div class="container__main">
         <ProjectsGithub />
+        <SkillList/>
       </div>
     </div>
   </div>
@@ -17,9 +18,9 @@
 import ProjectsGithub from "../components/projects/ProjetcsGithub";
 import WhoWatching from "../components/main/WhoWatching.vue";
 import AboutMe from "../components/main/AboutMe.vue";
-
+import SkillList from "../components/skills/SkillList.vue";
 export default {
-  components: { ProjectsGithub, WhoWatching, AboutMe },
+  components: { ProjectsGithub, WhoWatching, AboutMe, SkillList },
   data() {
     return {
       isLoggedIn: null,
