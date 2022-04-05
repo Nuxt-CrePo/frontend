@@ -2,7 +2,11 @@
 <div >
   <div class="back">
     <NuxtLink to="/">
-          <a>Retour</a>
+    <i class="icon"
+        ><font-awesome-icon class="iconFont" :icon="['fas', 'arrow-left']"
+      />
+      </i>
+         
         </NuxtLink>
   </div>
  <video class="video_player" id="player" width="100%" controls muted autoplay preload="auto">
@@ -49,4 +53,20 @@ h1 {
     font-weight: 900;
     margin-bottom: 15px;
 }
+.icon {
+  color: white;
+  display: flex;
+align-items: center;
+  height: 5vh;
+  width: 5vw;
+}
+  
+.iconFont {
+  width: 6vw;
+height: 6vh;
+
+
+}
+
+
 </style>

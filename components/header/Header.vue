@@ -325,7 +325,7 @@ window.addEventListener("scroll", function () {
     margin-top: 16px;
   }
   &__iconSearch {
-    height: 40px;
+    height: 43px;
     width: 20px;
     margin-right: 20px;
     position: relative;
