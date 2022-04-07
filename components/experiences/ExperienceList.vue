@@ -9,7 +9,7 @@
         </div>
         <div class="hide__content">
           <div class="text__hidden">
-            <span class="text__reco">{{experience.year}}, {{experience.duration}}</span>
+            <span>{{experience.year}}, {{experience.duration}}</span>
             <h2>{{ experience.name }}</h2>
 
             <span>{{experience.description}}</span>

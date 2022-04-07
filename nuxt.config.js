@@ -78,9 +78,7 @@ export default {
   //     }
   //   }
   // },
-  env: {
-    myPassword: process.env.MY_PASSWORD,
-  },
+
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
