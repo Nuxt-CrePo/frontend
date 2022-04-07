@@ -76,7 +76,7 @@ export default {
    bright() {
       var elt = document.getElementById("banner");
      if(this.show) {
-      elt.style.filter = "brightness(3.50)";
+      elt.style.filter = "brightness(3.00)";
      }
      else{
        elt.style.filter = "";
