@@ -206,6 +206,11 @@ export default {
     }
   
   },
+   beforeCreate() {
+    if (!JSON.parse(localStorage.getItem("user"))) {
+      this.$router.push("/")
+    }
+  },
   mounted() {
     // dispatch the getGithubProjects action which commits a mutation to update the state
     this.isLoading = false;
