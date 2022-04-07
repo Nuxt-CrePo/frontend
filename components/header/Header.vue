@@ -18,13 +18,13 @@
         </NuxtLink>
       </li>
       <li class="navbar__items" v-on:click="openMenu">
-        <NuxtLink to="/">
+        <NuxtLink to="/skills">
           <a>Skills</a>
         </NuxtLink>
       </li>
       <li class="navbar__items" v-on:click="openMenu">
-        <NuxtLink to="/">
-          <a>Experience</a>
+        <NuxtLink to="/experiences">
+          <a>Experiences</a>
         </NuxtLink>
       </li>
       <li class="navbar__items" v-on:click="openMenu">
@@ -59,7 +59,7 @@
             v-if="wantsToSearch"
             v-model="searchInput"
             type="text"
-            placeholder="Projects, technos, genres..."
+            placeholder="Projects..."
             @input="searchMovie(searchInput)"
           />
         </div>
@@ -298,7 +298,7 @@ window.addEventListener("scroll", function () {
       border: none;
       color: #fff;
       font-size: 1.4rem;
-      width: 30rem;
+      width: 15rem;
       &::placeholder {
         color: rgb(129, 129, 129);
       }

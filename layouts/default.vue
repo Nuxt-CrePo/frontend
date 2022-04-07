@@ -1,6 +1,6 @@
 <template>
   <div class="container__default">
-    <Header v-if="isLoggedIn && isIndex || isWishlist || isSearch"/>
+    <Header v-if="isLoggedIn && isIndex || isWishlist || isSearch || isSkills || isExperiences"/>
     <div class="body__default">
       <Nuxt />
     </div>
@@ -35,6 +35,12 @@ export default {
     },
     isWishlist() {
       return this.$route.name === "wishlists";
+    },
+    isSkills() {
+      return this.$route.name === "skills";
+    },
+    isExperiences() {
+      return this.$route.name === "experiences";
     },
     isWatch() {
       return this.$route.name === "watch";

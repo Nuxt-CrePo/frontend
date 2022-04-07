@@ -216,7 +216,7 @@ export default {
   position: relative;
 min-height: 100vh;
 z-index: 0;
-background-color: #141414;
+background-color: black;
 margin-right: auto;
 margin-left: auto;
 padding:1.5rem;

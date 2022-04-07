@@ -4,9 +4,7 @@
       <WhoWatching />
     </div>
     <div class="container__1" v-else>
-      <div class="banner">
-        <AboutMe />
-      </div>
+        <AboutMe/>
       <div class="container__main">
         <ProjectsGithub />
         <SkillList/>
@@ -41,22 +39,7 @@ export default {
 
 
 <style lang="scss">
-// .container__about {
-//    position: absolute;
-//   bottom: 5rem;
-//   left: 3rem;
-// }
-.banner {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  background: url("https://cdn.wallpapersafari.com/21/18/9pg2ia.jpeg");
-  background-size: cover;
-  box-shadow: rgba(0, 0, 0, 1) 0px 0px 80px 100px inset;
-}
-.about {
-  // position:absolute;
-}
+
 .container__main {
   background-color: #000;
   color: white;

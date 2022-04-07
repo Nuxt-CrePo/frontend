@@ -44,12 +44,12 @@ export default {
     '@nuxtjs/fontawesome'
   ],
   fontawesome: {
-    icons:{
-     solid:true,
-     brands:true,
-     regular:true
+    icons: {
+      solid: true,
+      brands: true,
+      regular: true
     }
-   },
+  },
   styleResources: {
     scss: [
       '~assets/styles/style.scss'
@@ -78,6 +78,9 @@ export default {
   //     }
   //   }
   // },
+  env: {
+    myPassword: process.env.MY_PASSWORD,
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -87,5 +90,9 @@ export default {
         autoprefixer: {},
       },
     },
+    env: {
+      baseUrl: process.env.BASE_URL,
+    }
   }
+
 }
