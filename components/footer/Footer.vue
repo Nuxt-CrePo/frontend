@@ -30,21 +30,21 @@ export default {}
     margin-bottom: 0.2rem;
     margin-left: 0;
   }
-  &__cols {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 2.5rem;
-    align-items: center;
-    justify-content: center;
-    @media only screen and (min-width: 767px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  & li {
-    line-height: 2.4;
-  }
-  & .copyright {
-    margin: 2rem 0;
-  }
+  // &__cols {
+  //   display: grid;
+  //   grid-template-columns: repeat(4, 1fr);
+  //   grid-gap: 2.5rem;
+  //   align-items: center;
+  //   justify-content: center;
+  //   @media only screen and (min-width: 767px) {
+  //     grid-template-columns: repeat(2, 1fr);
+  //   }
+  // }
+  // & li {
+  //   line-height: 2.4;
+  // }
+  // & .copyright {
+  //   margin: 2rem 0;
+  // }
 }
 </style>

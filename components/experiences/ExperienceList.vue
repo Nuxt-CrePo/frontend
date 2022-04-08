@@ -1,6 +1,5 @@
 <template>
   <div class="wrapper__projects">
-    <!-- <p v-if="isLoading">Loading....</p> -->
     <h1>Experiences</h1>
     <ul class="container__users">
       <li class="dropdown" v-for="(experience, index) in experiences" :key="index">

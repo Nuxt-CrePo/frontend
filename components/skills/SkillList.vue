@@ -1,6 +1,5 @@
 <template>
   <div class="wrapper__projects">
-    <!-- <p v-if="isLoading">Loading....</p> -->
     <h1>Skills</h1>
     <ul class="container__users">
       <li class="dropdown" v-for="(skill, index) in skills" :key="index">
